@@ -314,6 +314,71 @@
     }
     .stitle::after { content:''; flex:1; height:1px; background:var(--border); }
 
+    /* ── APPENDIX DIVIDER (separates the Salla store appendix) ── */
+    .appendix-divider {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 72px 0 0;
+    }
+    .appendix-divider .rule {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border) 25%, var(--border) 75%, transparent);
+    }
+    .appendix-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--navy);
+      color: var(--yellow);
+      border-radius: 999px;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      box-shadow: 0 6px 18px -8px rgba(12,14,29,0.35);
+    }
+    .appendix-badge .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 8px rgba(255,196,9,0.7);
+    }
+    .appendix-header {
+      margin: 18px 0 22px;
+      padding: 24px 28px;
+      background: linear-gradient(180deg, #fafbff 0%, var(--card) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .appendix-header::before {
+      content: '';
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--yellow), var(--teal));
+    }
+    .appendix-eyebrow {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .appendix-title {
+      font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .appendix-title .accent { color: var(--teal-dk); }
+
     /* ── PLATFORM HEADER STRIP ── */
     .platform-strip {
       display: flex;
@@ -490,7 +555,7 @@
       table { font-size: .82rem; }
       th, td { padding: 10px 10px; }
 
-      /* Tables scroll horizontally on tablets too — desktop layout doesn't fit */
+      /* Tables scroll horizontally on tablets too; desktop layout doesn't fit */
       .tbl-wrap, .tbl-wrap.solo {
         overflow-x: auto;
         overflow-y: hidden;
@@ -726,13 +791,13 @@
         </tr>
         <tr>
           <td><div class="project-cell"><div class="proj-ar">TikTok Ads</div><div class="proj-en">في انتظار الوصول للحساب الصحيح</div></div></td>
-          <td class="c">—</td>
-          <td class="c">—</td>
-          <td class="r" style="color:var(--muted)">—</td>
-          <td class="r" style="color:var(--muted)">—</td>
-          <td class="r" style="color:var(--muted)">—</td>
-          <td class="r" style="color:var(--muted)">—</td>
-          <td class="r" style="color:var(--muted)">—</td>
+          <td class="c">–</td>
+          <td class="c">–</td>
+          <td class="r" style="color:var(--muted)">–</td>
+          <td class="r" style="color:var(--muted)">–</td>
+          <td class="r" style="color:var(--muted)">–</td>
+          <td class="r" style="color:var(--muted)">–</td>
+          <td class="r" style="color:var(--muted)">–</td>
         </tr>
       </tbody>
       <tfoot>
@@ -750,7 +815,7 @@
     </table>
   </div>
   <div class="context-note" style="margin-top:14px;">
-    <strong>قراءة الجدول:</strong> Meta هي الأكثر إنفاقاً (37.9%) وحققت أعلى ظهور (45.77M) بأدنى CPM (0.87 ر.س) — أكفأ منصة من حيث تكلفة الألف ظهور. Google YouTube TrueView جاءت ثانية في كفاءة CPM (1.65 ر.س) ووفّرت 863 ألف مشاهدة فيديو. Snapchat جاءت ثالثة من حيث CPM (3.72 ر.س) لكنها قدّمت أعلى عدد مشاهدات فيديو (2.22M بمعدل أقل من سنت لكل مشاهدة) ضمن حملة Video Views، بالإضافة إلى حملة Awareness منفصلة. <strong>إجمالي الإنفاق المُحاسَب بالدولار:</strong> $27,870.17 USD.
+    <strong>قراءة الجدول:</strong> Meta هي الأكثر إنفاقاً (37.9%) وحققت أعلى ظهور (45.77M) بأدنى CPM (0.87 ر.س)؛ أكفأ منصة من حيث تكلفة الألف ظهور. Google YouTube TrueView جاءت ثانية في كفاءة CPM (1.65 ر.س) ووفّرت 863 ألف مشاهدة فيديو. Snapchat جاءت ثالثة من حيث CPM (3.72 ر.س) لكنها قدّمت أعلى عدد مشاهدات فيديو (2.22M بمعدل أقل من سنت لكل مشاهدة) ضمن حملة Video Views، بالإضافة إلى حملة Awareness منفصلة. <strong>إجمالي الإنفاق المُحاسَب بالدولار:</strong> $27,870.17 USD.
   </div>
 
   <!-- ───────────────── CHARTS ───────────────── -->
@@ -774,7 +839,7 @@
   </div>
 
   <!-- ───────────────── META / FACEBOOK ───────────────── -->
-  <div class="stitle">المنصة 1 · Meta (Facebook + Instagram) — الأعلى إنفاقاً</div>
+  <div class="stitle">المنصة 1 · Meta (Facebook + Instagram) · الأعلى إنفاقاً</div>
 
   <div class="platform-strip">
     <div class="platform-icon meta">f</div>
@@ -837,11 +902,11 @@
     </table>
   </div>
   <div class="context-note" style="margin-top:14px;">
-    <strong>ملاحظة على أداء Meta:</strong> حققت الحملة وصولاً (Reach) قدره 5.49 مليون شخص فريد و45.77 مليون ظهور، أي بمعدل ظهور (Frequency) ≈ 8.3 مرات لكل شخص — معدل مرتفع يدل على تكثيف العرض على نفس الجمهور. CPM المسجَّل البالغ 0.87 ر.س هو الأدنى بين المنصات الثلاث وأكثرها كفاءة من حيث تكلفة الظهور.
+    <strong>ملاحظة على أداء Meta:</strong> حققت الحملة وصولاً (Reach) قدره 5.49 مليون شخص فريد و45.77 مليون ظهور، أي بمعدل ظهور (Frequency) ≈ 8.3 مرات لكل شخص. معدل مرتفع يدل على تكثيف العرض على نفس الجمهور. CPM المسجَّل البالغ 0.87 ر.س هو الأدنى بين المنصات الثلاث وأكثرها كفاءة من حيث تكلفة الظهور.
   </div>
 
   <!-- ───────────────── SNAPCHAT ───────────────── -->
-  <div class="stitle">المنصة 2 · Snapchat Ads — حملتان</div>
+  <div class="stitle">المنصة 2 · Snapchat Ads · حملتان</div>
 
   <div class="platform-strip">
     <div class="platform-icon snap">S</div>
@@ -916,7 +981,7 @@
     </table>
   </div>
   <div class="context-note" style="margin-top:14px;">
-    <strong>ملاحظات على Snapchat:</strong> حملة الفيديو ("Campaign - Video") توقفت عن العرض حالياً بسبب بلوغ سقف الإنفاق اليومي للمجموعة الإعلانية — قد يستدعي الأمر رفع السقف لاستئناف العرض في الأيام المتبقية من الشهر. كفاءة عالية على مستوى المشاهدة: تكلفة المشاهدة الفعلية (eCPV) أقل من سنت (≈ 0.011 ر.س لكل مشاهدة 2 ثانية). أما حملة Awareness فمستمرة بكفاءة CPM جيدة (2.55 ر.س).
+    <strong>ملاحظات على Snapchat:</strong> حملة الفيديو ("Campaign - Video") توقفت عن العرض حالياً بسبب بلوغ سقف الإنفاق اليومي للمجموعة الإعلانية، مما قد يستدعي رفع السقف لاستئناف العرض في الأيام المتبقية من الشهر. كفاءة عالية على مستوى المشاهدة: تكلفة المشاهدة الفعلية (eCPV) أقل من سنت (≈ 0.011 ر.س لكل مشاهدة 2 ثانية). أما حملة Awareness فمستمرة بكفاءة CPM جيدة (2.55 ر.س).
   </div>
 
   <!-- ───────────────── GOOGLE ADS ───────────────── -->
@@ -980,7 +1045,7 @@
     </table>
   </div>
   <div class="context-note" style="margin-top:14px;">
-    <strong>ملاحظات على Google Ads:</strong> الحملة من نوع YouTube TrueView وانطلقت في 13 مايو 2026 بميزانية إجمالية قدرها $21,464 ممتدّة حتى 13 يونيو. حالة "Limited by budget" تعني أن الميزانية اليومية تنفد قبل انتهاء فرص العرض المتاحة — يمكن رفعها للوصول إلى ظهور إضافي. درجة تحسين الحملة (Optimization Score) على مستوى الحساب = 75.4%.
+    <strong>ملاحظات على Google Ads:</strong> الحملة من نوع YouTube TrueView وانطلقت في 13 مايو 2026 بميزانية إجمالية قدرها $21,464 ممتدّة حتى 13 يونيو. حالة "Limited by budget" تعني أن الميزانية اليومية تنفد قبل انتهاء فرص العرض المتاحة. يمكن رفعها للوصول إلى ظهور إضافي. درجة تحسين الحملة (Optimization Score) على مستوى الحساب = 75.4%.
   </div>
 
   <!-- ───────────────── INACTIVE PLATFORMS ───────────────── -->
@@ -995,11 +1060,20 @@
     <div class="ic-status"><span class="chip chip-na">بانتظار الوصول</span></div>
   </div>
 
-  <!-- ───────────────── SALLA STORE ───────────────── -->
-  <div class="stitle">مبيعات متجر الوادي على سلة (1–24 مايو)</div>
+  <!-- ───────────────── APPENDIX · SALLA STORE ───────────────── -->
+  <div class="appendix-divider">
+    <div class="rule"></div>
+    <div class="appendix-badge"><span class="dot"></span>ملحق A</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="appendix-header">
+    <div class="appendix-eyebrow">ملحق منفصل · أداء قناة البيع تحت الهوية الجديدة</div>
+    <div class="appendix-title">مبيعات <span class="accent">متجر الوادي على سلة</span> (1 إلى 24 مايو)</div>
+  </div>
 
   <div class="context-note">
-    <strong>النطاق:</strong> نتائج متجر الوادي على منصة <strong>سلة</strong> خلال فترة الحملة (1–24 مايو). حملات هذا التقرير تخدم إطلاق <strong>الهوية الجديدة لعلامة الوادي</strong>، ومتجر سلة انطلق متزامناً مع الحملة كقناة بيع تحت الهوية الجديدة — الأرقام أدناه ناتج مباشر لزخم الحملة. المصدر: لوحة تحكم سلة · تقرير أداء المتجر.
+    <strong>النطاق:</strong> نتائج متجر الوادي على منصة <strong>سلة</strong> خلال فترة الحملة (1–24 مايو). حملات هذا التقرير تخدم إطلاق <strong>الهوية الجديدة لعلامة الوادي</strong>، ومتجر سلة انطلق متزامناً مع الحملة كقناة بيع تحت الهوية الجديدة، والأرقام أدناه ناتج مباشر لزخم الحملة. المصدر: لوحة تحكم سلة · تقرير أداء المتجر.
   </div>
 
   <!-- SALLA KPI CARDS -->
@@ -1084,12 +1158,12 @@
   </div>
 
   <div class="context-note" style="margin-top:14px;">
-    <strong>قراءة الأرقام:</strong> ٨٢٪ من الطلبات (125 من 153) وصلت للعميل خلال الفترة، و٤.٦٪ ألغيت — معدّل إلغاء طبيعي للقطاع. متوسط الطلب 168 ر.س يعكس سلة شراء يومية. هذه أرقام انطلاقة لمتجر جديد، ومسار النمو الطبيعي بعد إطلاقة الهوية مرشّح للارتفاع مع تواصل الحملات.
+    <strong>قراءة الأرقام:</strong> ٨٢٪ من الطلبات (125 من 153) وصلت للعميل خلال الفترة، و٤.٦٪ ألغيت، وهو معدّل إلغاء طبيعي للقطاع. متوسط الطلب 168 ر.س يعكس سلة شراء يومية. هذه أرقام انطلاقة لمتجر جديد، ومسار النمو الطبيعي بعد إطلاقة الهوية مرشّح للارتفاع مع تواصل الحملات.
   </div>
 
   <!-- FOOTER -->
   <div class="footer">
-    تقرير إنفاق حملات الوادي &nbsp;&middot;&nbsp; 1 – 24 مايو 2026 &nbsp;&middot;&nbsp; أُعدّ في 24 مايو 2026 &nbsp;&middot;&nbsp; العملة: ر.س (USD في الأعمدة الباهتة، سعر صرف 3.75) &nbsp;&middot;&nbsp; النطاق: Meta + Google + Snapchat + متجر سلة — TikTok قيد التأكيد
+    تقرير إنفاق حملات الوادي &nbsp;&middot;&nbsp; 1 – 24 مايو 2026 &nbsp;&middot;&nbsp; أُعدّ في 24 مايو 2026 &nbsp;&middot;&nbsp; العملة: ر.س (USD في الأعمدة الباهتة، سعر صرف 3.75) &nbsp;&middot;&nbsp; النطاق: Meta + Google + Snapchat + متجر سلة · TikTok قيد التأكيد
   </div>
 
 </div><!-- /page -->
