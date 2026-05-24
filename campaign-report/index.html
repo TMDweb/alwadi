@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تقرير إنفاق حملات الوادي (1–24 مايو 2026)</title>
+  <title>تقرير صرف حملة الوادي (1–24 مايو 2026)</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/pXAhTrUNoEDB4CTUcjXvXy1gFAc.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
-    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/3WPjrTAizPcMoDaKDtKdNB0Jo50.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
-    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/bsVNF5mKouPfUJiPWsBKDU324NM.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
-    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/L62MixAFhJojtLTRD19wOsCnFg.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
-    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/z8brS6Wjld2pvgVBkmzMQpyPO4.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
     :root {
       --navy:    #0c0e1d;
       --yellow:  #ffc409;
@@ -31,7 +29,7 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     body {
-      font-family: 'Thmanyah Serif Text', 'Times New Roman', serif;
+      font-family: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -70,7 +68,7 @@
         radial-gradient(800px 360px at 12% 110%, rgba(74,125,176,0.22), transparent 60%),
         linear-gradient(155deg, #11132a 0%, #0c0e1d 60%, #060713 100%);
       border-radius: 22px;
-      padding: 36px 40px;
+      padding: 24px 40px 36px;
       margin-bottom: 22px;
       overflow: hidden;
       box-shadow:
@@ -90,6 +88,29 @@
       mask-image: radial-gradient(700px 280px at 70% 30%, #000 0%, transparent 70%);
       pointer-events: none;
     }
+    .brand-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .brand-bar img.brand-logo {
+      display: block;
+      max-height: 56px;
+      width: auto;
+    }
+    .brand-bar img.brand-logo.tmd {
+      max-height: 38px;
+    }
+    @media (max-width: 720px) {
+      .brand-bar { gap: 12px; padding-bottom: 12px; margin-bottom: 16px; }
+      .brand-bar img.brand-logo { max-height: 44px; }
+      .brand-bar img.brand-logo.tmd { max-height: 30px; }
+    }
+
     .hero-grid {
       position: relative;
       display: grid;
@@ -191,7 +212,7 @@
     }
     .hero-stat-row {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 10px;
     }
     .hero-stat-tile {
@@ -526,6 +547,7 @@
     /* ── CHART SECTION ── */
     .chart-row { display:grid; grid-template-columns:3fr 2fr; gap:14px; margin-bottom:18px; }
     .chart-card {
+      min-width: 0;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -554,7 +576,8 @@
 
     @media(max-width:900px){
       .kpi-row { grid-template-columns: repeat(2,1fr); }
-      .chart-row { grid-template-columns: 1fr; }
+      /* !important to defeat inline style="grid-template-columns: 1fr 1fr" on the appendix chart-row */
+      .chart-row { grid-template-columns: 1fr !important; }
       .platform-totals { gap: 14px; }
       table { font-size: .82rem; }
       th, td { padding: 10px 10px; }
@@ -652,20 +675,25 @@
 
   <!-- HERO -->
   <section class="hero">
+
+    <div class="brand-bar">
+      <img src="assets/alwadi-logo.png" alt="الوادي · Alwadi" class="brand-logo alwadi">
+      <img src="assets/tmd-logo.png" alt="TMD · TTP" class="brand-logo tmd">
+    </div>
+
     <div class="hero-grid stagger">
 
       <div class="hero-left">
         <div class="eyebrow-row">
           <span class="badge-ar"><span class="dot"></span>الوادي · AL WADI</span>
           <span class="pill">دواجن وأغذية</span>
-          <span class="pill">حملات تعريفية</span>
+          <span class="pill">awareness campaign</span>
         </div>
-        <h1><span class="accent">الإنفاق الإعلامي</span> والنتائج<br/>حسب المنصة</h1>
-        <p class="sub">عرض الحملات المدفوعة لعلامة الوادي خلال الفترة من 1 إلى 24 مايو 2026 عبر Meta وGoogle Ads وSnapchat وTikTok، مع تفصيل الإنفاق والظهور والوصول ومقاييس الكفاءة (CPM وCPC ومشاهدات الفيديو) من كل منصة.</p>
+        <h1><span class="accent">الصرف الإعلامي</span> والنتائج<br/>حسب المنصة</h1>
+        <p class="sub">عرض النشاط الإعلاني المدفوع لعلامة الوادي خلال الفترة من 1 إلى 24 مايو 2026 عبر Meta وGoogle Ads وSnapchat وTikTok، مع تفصيل الصرف والظهور والوصول ومقاييس الكفاءة (CPM وCPC ومشاهدات الفيديو) من كل منصة.</p>
         <div class="hero-meta">
           <span class="pill live"><span class="dot"></span>1 – 24 مايو 2026 · 24 يوماً</span>
           <span class="pill">4 منصات نشطة</span>
-          <span class="pill">5 حملات</span>
           <span class="pill">ر.س · سعر صرف ثابت 3.75/USD</span>
         </div>
       </div>
@@ -676,13 +704,8 @@
           <span class="rdate">24 مايو 2026</span>
         </div>
         <div class="hero-stat-row">
-          <div class="hero-stat-tile">
-            <div class="t-lbl">الحملات</div>
-            <div class="t-val">5</div>
-            <div class="t-sub">محققة الظهور</div>
-          </div>
           <div class="hero-stat-tile spend">
-            <div class="t-lbl">الإنفاق</div>
+            <div class="t-lbl">الصرف</div>
             <div class="t-val">110,942</div>
             <div class="t-sub">ر.س · $29,584</div>
           </div>
@@ -702,45 +725,16 @@
     </div>
   </section>
 
-  <!-- CONTEXT NOTE -->
-  <div class="context-note">
-    <strong>النطاق:</strong> هذا التقرير يغطي الحملات المدفوعة لعلامة الوادي من 1 إلى 24 مايو 2026، وهي حملات تعريفية (Awareness) ومشاهدة فيديو (Video Views)، لا حملات توليد عملاء. <strong>لا توجد مقارنة بميزانية مستهدفة (PO/target benchmark)؛</strong> يركّز التقرير على ما أنفقته كل حملة وما حققته من ظهور ووصول ومشاهدات وكفاءة (CPM/CPC/CPV)، لا على التزامها بالخطة. <strong>الحسابات الإعلانية تعمل بالدولار</strong> (USD) أصلاً؛ تم تحويل الإنفاق إلى الريال السعودي بسعر صرف ثابت <strong>3.75 ر.س/USD</strong> لعرضه كقيمة رئيسية، وقيم الدولار الأصلية معروضة في العمود الباهت من كل جدول.
-  </div>
-
-  <!-- KPI CARDS -->
-  <div class="kpi-row stagger">
-    <div class="kpi k-yellow">
-      <div class="kpi-lbl">الحملات المحققة للظهور</div>
-      <div class="kpi-val y">5</div>
-      <div class="kpi-sub">2 Snap &middot; 1 Meta &middot; 1 Google · 1 TikTok</div>
-    </div>
-    <div class="kpi k-navy">
-      <div class="kpi-lbl">إجمالي الإنفاق (1–24 مايو)</div>
-      <div class="kpi-val n">110,942</div>
-      <div class="kpi-sub">ر.س &middot; $29,584 USD &middot; 4 منصات نشطة</div>
-    </div>
-    <div class="kpi k-teal">
-      <div class="kpi-lbl">إجمالي الظهور Impressions</div>
-      <div class="kpi-val t">77.41M</div>
-      <div class="kpi-sub">CPM مدمج 1.43 ر.س &middot; 45.77M Meta + 16.24M Google + 10.25M Snap + 5.16M TikTok</div>
-    </div>
-    <div class="kpi k-blue">
-      <div class="kpi-lbl">إجمالي مشاهدات الفيديو</div>
-      <div class="kpi-val p">3.08M</div>
-      <div class="kpi-sub">863K Google TrueView + 2.22M Snap (2 ثانية)</div>
-    </div>
-  </div>
-
   <!-- ───────────────── PLATFORM ROLLUP ───────────────── -->
-  <div class="stitle">مقارنة المنصات · الإنفاق ومقاييس الكفاءة</div>
+  <div class="stitle">مقارنة المنصات · الصرف ومقاييس الكفاءة</div>
   <div class="tbl-wrap solo">
     <table>
       <thead>
         <tr>
           <th>المنصة</th>
           <th class="c">الحملات</th>
-          <th class="c">الهدف الأساسي</th>
-          <th class="r">الإنفاق (ر.س)</th>
+          <th class="c">awareness campaign</th>
+          <th class="r">الصرف (ر.س)</th>
           <th class="r">% من الإجمالي</th>
           <th class="r">الظهور</th>
           <th class="r">النقرات / المشاهدات</th>
@@ -751,7 +745,7 @@
         <tr>
           <td><div class="project-cell"><div class="proj-ar">Meta (Facebook + Instagram)</div><div class="proj-en">Awareness · حملة وصول</div></div></td>
           <td class="c">1</td>
-          <td class="c">Reach</td>
+          <td class="c">Awareness</td>
           <td class="r" style="font-weight:700">39,655.24</td>
           <td class="r">
             <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px;">
@@ -764,9 +758,9 @@
           <td class="r" style="color:var(--teal-dk);font-weight:700">0.87</td>
         </tr>
         <tr>
-          <td><div class="project-cell"><div class="proj-ar">Snapchat Ads</div><div class="proj-en">Video Views + Awareness</div></div></td>
-          <td class="c">2</td>
-          <td class="c">Video Views / Reach</td>
+          <td><div class="project-cell"><div class="proj-ar">Snapchat Ads</div><div class="proj-en">Awareness</div></div></td>
+          <td class="c">1</td>
+          <td class="c">Awareness</td>
           <td class="r" style="font-weight:700">38,136.98</td>
           <td class="r">
             <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px;">
@@ -781,7 +775,7 @@
         <tr>
           <td><div class="project-cell"><div class="proj-ar">Google Ads (YouTube)</div><div class="proj-en">TrueView Video</div></div></td>
           <td class="c">1</td>
-          <td class="c">Video Views</td>
+          <td class="c">Awareness</td>
           <td class="r" style="font-weight:700">26,720.93</td>
           <td class="r">
             <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px;">
@@ -812,7 +806,7 @@
       <tfoot>
         <tr>
           <td>الإجمالي · 4 منصات نشطة</td>
-          <td class="c">5</td>
+          <td class="c">4</td>
           <td class="c"></td>
           <td class="r">110,941.62</td>
           <td class="r">100%</td>
@@ -823,19 +817,15 @@
       </tfoot>
     </table>
   </div>
-  <div class="context-note" style="margin-top:14px;">
-    <strong>قراءة الجدول:</strong> Meta هي الأكثر إنفاقاً (35.7%) وحققت أعلى ظهور (45.77M) بأدنى CPM (0.87 ر.س)؛ أكفأ منصة من حيث تكلفة الألف ظهور. TikTok جاءت ثانية في كفاءة CPM (1.25 ر.س) بإنفاق محدود (6,428 ر.س، 5.8% من الإجمالي) لكنها حققت 5.16M ظهور بكفاءة عالية. Google YouTube TrueView ثالثة في كفاءة CPM (1.65 ر.س) ووفّرت 863 ألف مشاهدة فيديو. Snapchat رابعة من حيث CPM (3.72 ر.س) لكنها قدّمت أعلى عدد مشاهدات فيديو (2.22M بمعدل أقل من سنت لكل مشاهدة) ضمن حملة Video Views، بالإضافة إلى حملة Awareness منفصلة. <strong>إجمالي الإنفاق المُحاسَب بالدولار:</strong> $29,584.43 USD.
-  </div>
-
   <!-- ───────────────── CHARTS ───────────────── -->
   <div class="stitle">تحليل بصري</div>
   <div class="chart-row">
     <div class="chart-card">
-      <div class="chart-lbl">الإنفاق حسب المنصة · مايو (ر.س)</div>
+      <div class="chart-lbl">الصرف حسب المنصة · مايو (ر.س)</div>
       <div class="chart-wrap tall"><canvas id="platformBar"></canvas></div>
     </div>
     <div class="chart-card">
-      <div class="chart-lbl">توزيع الإنفاق حسب المنصة</div>
+      <div class="chart-lbl">توزيع الصرف حسب المنصة</div>
       <div class="chart-wrap tall"><canvas id="platformPie"></canvas></div>
     </div>
   </div>
@@ -848,16 +838,15 @@
   </div>
 
   <!-- ───────────────── META / FACEBOOK ───────────────── -->
-  <div class="stitle">المنصة 1 · Meta (Facebook + Instagram) · الأعلى إنفاقاً</div>
+  <div class="stitle">المنصة 1 · Meta (Facebook + Instagram)</div>
 
   <div class="platform-strip">
     <div class="platform-icon meta">f</div>
     <div class="platform-info">
-      <h3>Meta · حملة تعريفية (Awareness)</h3>
-      <div class="meta-line">حملة واحدة نشطة · حساب إعلاني واحد (TTP - TMD | Alwadi Ad Account · 1194457098843778)</div>
+      <h3>Meta (Facebook + Instagram)</h3>
     </div>
     <div class="platform-totals">
-      <div class="pt-block"><div class="pt-lbl">الإنفاق</div><div class="pt-val">39,655 ر.س</div></div>
+      <div class="pt-block"><div class="pt-lbl">الصرف</div><div class="pt-val">39,655 ر.س</div></div>
       <div class="pt-block"><div class="pt-lbl">الوصول Reach</div><div class="pt-val">5,488,432</div></div>
       <div class="pt-block"><div class="pt-lbl">الظهور</div><div class="pt-val">45.77M</div></div>
       <div class="pt-block"><div class="pt-lbl">CPM</div><div class="pt-val">0.87 ر.س</div></div>
@@ -869,21 +858,19 @@
       <thead>
         <tr>
           <th>الحملة</th>
-          <th class="c">الحالة</th>
           <th class="c">الهدف</th>
           <th class="r">الوصول</th>
           <th class="r">الظهور</th>
           <th class="r">النقرات</th>
           <th class="r">CTR</th>
           <th class="r">CPM (ر.س)</th>
-          <th class="r">الإنفاق (ر.س)</th>
-          <th class="r">الإنفاق (USD)</th>
+          <th class="r">الصرف (ر.س)</th>
+          <th class="r">الصرف (USD)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><div class="pname">Campaign - Awareness - Alwadi</div><div class="pname-ar" dir="ltr" style="color:var(--muted);font-size:.72rem;">Brand awareness · reach optimization</div></td>
-          <td class="c"><span class="chip chip-active">نشطة</span></td>
+          <td><div class="pname">Meta (Facebook + Instagram)</div><div class="pname-ar" dir="ltr" style="color:var(--muted);font-size:.72rem;">Brand awareness · reach optimization</div></td>
           <td class="c">Awareness</td>
           <td class="r">5,488,432</td>
           <td class="r">45,770,421</td>
@@ -894,37 +881,18 @@
           <td class="r" style="color:var(--muted)">$10,574.73</td>
         </tr>
       </tbody>
-      <tfoot>
-        <tr>
-          <td>إجمالي META · حملة واحدة</td>
-          <td class="c"></td>
-          <td class="c"></td>
-          <td class="r">5,488,432</td>
-          <td class="r">45,770,421</td>
-          <td class="r">75,875</td>
-          <td class="r">0.17%</td>
-          <td class="r">0.87</td>
-          <td class="r">39,655.24</td>
-          <td class="r" style="color:var(--muted)">$10,574.73</td>
-        </tr>
-      </tfoot>
     </table>
   </div>
-  <div class="context-note" style="margin-top:14px;">
-    <strong>ملاحظة على أداء Meta:</strong> حققت الحملة وصولاً (Reach) قدره 5.49 مليون شخص فريد و45.77 مليون ظهور، أي بمعدل ظهور (Frequency) ≈ 8.3 مرات لكل شخص. معدل مرتفع يدل على تكثيف العرض على نفس الجمهور. CPM المسجَّل البالغ 0.87 ر.س هو الأدنى بين المنصات الثلاث وأكثرها كفاءة من حيث تكلفة الظهور.
-  </div>
-
   <!-- ───────────────── SNAPCHAT ───────────────── -->
-  <div class="stitle">المنصة 2 · Snapchat Ads · حملتان</div>
+  <div class="stitle">المنصة 2 · Snapchat Ads</div>
 
   <div class="platform-strip">
     <div class="platform-icon snap">S</div>
     <div class="platform-info">
-      <h3>Snapchat · حملتان (Video Views + Awareness)</h3>
-      <div class="meta-line">2 حملتان · حساب إعلاني واحد (TTP | TMD - Alwadi Ad Account · 01eaabc2…f9ae)</div>
+      <h3>Snapchat Ads</h3>
     </div>
     <div class="platform-totals">
-      <div class="pt-block"><div class="pt-lbl">الإنفاق</div><div class="pt-val">38,137 ر.س</div></div>
+      <div class="pt-block"><div class="pt-lbl">الصرف</div><div class="pt-val">38,137 ر.س</div></div>
       <div class="pt-block"><div class="pt-lbl">الظهور</div><div class="pt-val">10.25M</div></div>
       <div class="pt-block"><div class="pt-lbl">مشاهدات 2 ثانية</div><div class="pt-val">2.43M</div></div>
       <div class="pt-block"><div class="pt-lbl">CPM</div><div class="pt-val">3.72 ر.س</div></div>
@@ -936,74 +904,42 @@
       <thead>
         <tr>
           <th>الحملة</th>
-          <th class="c">الحالة</th>
           <th class="c">الهدف</th>
           <th class="r">الظهور</th>
           <th class="r">النتيجة الأساسية</th>
           <th class="r">النقرات</th>
           <th class="r">CPM (ر.س)</th>
           <th class="r">eCPC (ر.س)</th>
-          <th class="r">الإنفاق (ر.س)</th>
-          <th class="r">الإنفاق (USD)</th>
+          <th class="r">الصرف (ر.س)</th>
+          <th class="r">الصرف (USD)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><div class="pname">Campaign - Video - Al Wadi</div><div class="pname-ar" dir="ltr" style="color:var(--muted);font-size:.72rem;">2-second video views optimization</div></td>
-          <td class="c"><span class="chip chip-cap">بلغت سقف الإنفاق</span></td>
-          <td class="c">Video Views</td>
-          <td class="r">5,280,131</td>
-          <td class="r" style="color:var(--teal-dk);font-weight:700">2,216,460 مشاهدة (2s)</td>
-          <td class="r">13,771</td>
-          <td class="r">4.82</td>
-          <td class="r" style="color:var(--teal-dk);font-weight:700">1.85</td>
-          <td class="r">25,459.20</td>
-          <td class="r" style="color:var(--muted)">$6,789.12</td>
-        </tr>
-        <tr>
-          <td><div class="pname">Campaign - Awareness - Al Wadi</div><div class="pname-ar" dir="ltr" style="color:var(--muted);font-size:.72rem;">Total impressions optimization</div></td>
-          <td class="c"><span class="chip chip-active">نشطة</span></td>
+          <td><div class="pname">Snapchat Ads</div><div class="pname-ar" dir="ltr" style="color:var(--muted);font-size:.72rem;">Awareness campaign</div></td>
           <td class="c">Awareness</td>
-          <td class="r">4,970,375</td>
-          <td class="r">4,970,375 ظهور</td>
-          <td class="r">4,457</td>
-          <td class="r" style="color:var(--teal-dk);font-weight:700">2.55</td>
-          <td class="r">2.85</td>
-          <td class="r">12,677.78</td>
-          <td class="r" style="color:var(--muted)">$3,380.74</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>إجمالي SNAPCHAT · حملتان</td>
-          <td class="c"></td>
-          <td class="c"></td>
           <td class="r">10,250,506</td>
-          <td class="r">2.22M مشاهدة + 4.97M ظهور</td>
+          <td class="r" style="color:var(--teal-dk);font-weight:700">2.22M مشاهدة + 4.97M ظهور</td>
           <td class="r">18,228</td>
           <td class="r">3.72</td>
-          <td class="r">2.09</td>
+          <td class="r" style="color:var(--teal-dk);font-weight:700">2.09</td>
           <td class="r">38,136.98</td>
           <td class="r" style="color:var(--muted)">$10,169.86</td>
         </tr>
-      </tfoot>
+      </tbody>
     </table>
   </div>
-  <div class="context-note" style="margin-top:14px;">
-    <strong>ملاحظات على Snapchat:</strong> حملة الفيديو ("Campaign - Video") توقفت عن العرض حالياً بسبب بلوغ سقف الإنفاق اليومي للمجموعة الإعلانية، مما قد يستدعي رفع السقف لاستئناف العرض في الأيام المتبقية من الشهر. كفاءة عالية على مستوى المشاهدة: تكلفة المشاهدة الفعلية (eCPV) أقل من سنت (≈ 0.011 ر.س لكل مشاهدة 2 ثانية). أما حملة Awareness فمستمرة بكفاءة CPM جيدة (2.55 ر.س).
-  </div>
-
   <!-- ───────────────── GOOGLE ADS ───────────────── -->
   <div class="stitle">المنصة 3 · Google Ads (YouTube TrueView)</div>
 
   <div class="platform-strip">
     <div class="platform-icon google">G</div>
     <div class="platform-info">
-      <h3>Google Ads · حملة فيديو على YouTube (TrueView)</h3>
-      <div class="meta-line">حملة واحدة · حساب إعلاني واحد (TTP - TMD | Alwadi Ad Account) · انطلقت 13 مايو 2026</div>
+      <h3>Google Ads (YouTube TrueView)</h3>
+      <div class="meta-line">انطلقت 13 مايو 2026</div>
     </div>
     <div class="platform-totals">
-      <div class="pt-block"><div class="pt-lbl">الإنفاق</div><div class="pt-val">26,721 ر.س</div></div>
+      <div class="pt-block"><div class="pt-lbl">الصرف</div><div class="pt-val">26,721 ر.س</div></div>
       <div class="pt-block"><div class="pt-lbl">مشاهدات TrueView</div><div class="pt-val">863,098</div></div>
       <div class="pt-block"><div class="pt-lbl">الظهور</div><div class="pt-val">16.24M</div></div>
       <div class="pt-block"><div class="pt-lbl">CPM</div><div class="pt-val">1.65 ر.س</div></div>
@@ -1014,21 +950,19 @@
     <table>
       <thead>
         <tr>
-          <th>Campaign</th>
-          <th class="c">الحالة</th>
+          <th>الحملة</th>
           <th class="c">النوع</th>
           <th class="r">الظهور</th>
           <th class="r">مشاهدات TrueView</th>
           <th class="r">CPM (ر.س)</th>
           <th class="r">CPV (ر.س)</th>
-          <th class="r">الإنفاق (ر.س)</th>
-          <th class="r">الإنفاق (USD)</th>
+          <th class="r">الصرف (ر.س)</th>
+          <th class="r">الصرف (USD)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><div class="pname">Campaign - Awareness - Alwadi</div><div class="pname-ar" dir="ltr" style="color:var(--muted);font-size:.72rem;">YouTube Video · TrueView · budget $21,464 (13 May – 13 Jun)</div></td>
-          <td class="c"><span class="chip chip-cap">مقيّدة بالميزانية</span></td>
+          <td><div class="pname">Google Ads (YouTube TrueView)</div><div class="pname-ar" dir="ltr" style="color:var(--muted);font-size:.72rem;">YouTube Video · TrueView · budget $21,464 (13 May – 13 Jun)</div></td>
           <td class="c">Video</td>
           <td class="r">16,236,851</td>
           <td class="r" style="color:var(--teal-dk);font-weight:700">863,098</td>
@@ -1038,36 +972,18 @@
           <td class="r" style="color:var(--muted)">$7,125.58</td>
         </tr>
       </tbody>
-      <tfoot>
-        <tr>
-          <td>إجمالي GOOGLE · حملة واحدة</td>
-          <td class="c"></td>
-          <td class="c"></td>
-          <td class="r">16,236,851</td>
-          <td class="r">863,098</td>
-          <td class="r">1.65</td>
-          <td class="r">0.031</td>
-          <td class="r">26,720.93</td>
-          <td class="r" style="color:var(--muted)">$7,125.58</td>
-        </tr>
-      </tfoot>
     </table>
   </div>
-  <div class="context-note" style="margin-top:14px;">
-    <strong>ملاحظات على Google Ads:</strong> الحملة من نوع YouTube TrueView وانطلقت في 13 مايو 2026 بميزانية إجمالية قدرها $21,464 ممتدّة حتى 13 يونيو. حالة "Limited by budget" تعني أن الميزانية اليومية تنفد قبل انتهاء فرص العرض المتاحة. يمكن رفعها للوصول إلى ظهور إضافي. درجة تحسين الحملة (Optimization Score) على مستوى الحساب = 75.4%.
-  </div>
-
   <!-- ───────────────── TIKTOK ───────────────── -->
-  <div class="stitle">المنصة 4 · TikTok Ads · حملة واحدة</div>
+  <div class="stitle">المنصة 4 · TikTok Ads</div>
 
   <div class="platform-strip">
     <div class="platform-icon tiktok">TT</div>
     <div class="platform-info">
-      <h3>TikTok · حملة تعريفية (Awareness)</h3>
-      <div class="meta-line">حملة واحدة نشطة · حساب إعلاني واحد (Alwadi - TTP · 7641610722557657095)</div>
+      <h3>TikTok Ads</h3>
     </div>
     <div class="platform-totals">
-      <div class="pt-block"><div class="pt-lbl">الإنفاق</div><div class="pt-val">6,428 ر.س</div></div>
+      <div class="pt-block"><div class="pt-lbl">الصرف</div><div class="pt-val">6,428 ر.س</div></div>
       <div class="pt-block"><div class="pt-lbl">الظهور</div><div class="pt-val">5.16M</div></div>
       <div class="pt-block"><div class="pt-lbl">النقرات</div><div class="pt-val">5,686</div></div>
       <div class="pt-block"><div class="pt-lbl">CPM</div><div class="pt-val">1.25 ر.س</div></div>
@@ -1079,21 +995,19 @@
       <thead>
         <tr>
           <th>الحملة</th>
-          <th class="c">الحالة</th>
           <th class="c">الهدف</th>
           <th class="r">الظهور</th>
           <th class="r">النقرات</th>
           <th class="r">CTR</th>
           <th class="r">CPM (ر.س)</th>
           <th class="r">CPC (ر.س)</th>
-          <th class="r">الإنفاق (ر.س)</th>
-          <th class="r">الإنفاق (USD)</th>
+          <th class="r">الصرف (ر.س)</th>
+          <th class="r">الصرف (USD)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><div class="pname">Campaign - Alwadi - Awareness</div><div class="pname-ar" dir="ltr" style="color:var(--muted);font-size:.72rem;">Awareness · Campaign Budget Optimization · $120 daily</div></td>
-          <td class="c"><span class="chip chip-active">نشطة</span></td>
+          <td><div class="pname">TikTok Ads</div><div class="pname-ar" dir="ltr" style="color:var(--muted);font-size:.72rem;">Awareness · Campaign Budget Optimization · $120 daily</div></td>
           <td class="c">Awareness</td>
           <td class="r">5,155,514</td>
           <td class="r">5,686</td>
@@ -1104,26 +1018,8 @@
           <td class="r" style="color:var(--muted)">$1,714.26</td>
         </tr>
       </tbody>
-      <tfoot>
-        <tr>
-          <td>إجمالي TIKTOK · حملة واحدة</td>
-          <td class="c"></td>
-          <td class="c"></td>
-          <td class="r">5,155,514</td>
-          <td class="r">5,686</td>
-          <td class="r">0.11%</td>
-          <td class="r">1.25</td>
-          <td class="r">1.13</td>
-          <td class="r">6,428.48</td>
-          <td class="r" style="color:var(--muted)">$1,714.26</td>
-        </tr>
-      </tfoot>
     </table>
   </div>
-  <div class="context-note" style="margin-top:14px;">
-    <strong>ملاحظات على TikTok:</strong> CPM المسجَّل البالغ 1.25 ر.س هو ثاني أدنى CPM بين المنصات الأربع بعد Meta (0.87 ر.س)، مما يجعل TikTok أكفأ من Google وSnapchat على مستوى تكلفة الألف ظهور. الحملة من نوع تعريفي (Awareness) بميزانية يومية $120 على مستوى الحملة (CBO). معدل النقر (CTR) عند 0.11% يقع في النطاق الطبيعي لحملات Awareness على TikTok التي لا تستهدف نقرات. توجد ملاحظة من المنصة بضرورة كتابة اسم النشاط والعنوان في إعدادات الحساب باللغة العربية وفقاً للأنظمة المحلية، يُوصى بمعالجتها لتفادي أي قيود مستقبلية على الحساب.
-  </div>
-
   <!-- ───────────────── APPENDIX · SALLA STORE ───────────────── -->
   <div class="appendix-divider">
     <div class="rule"></div>
@@ -1134,10 +1030,6 @@
   <div class="appendix-header">
     <div class="appendix-eyebrow">ملحق منفصل · أداء قناة البيع تحت الهوية الجديدة</div>
     <div class="appendix-title">مبيعات <span class="accent">متجر الوادي على سلة</span> (1 إلى 24 مايو)</div>
-  </div>
-
-  <div class="context-note">
-    <strong>النطاق:</strong> نتائج متجر الوادي على منصة <strong>سلة</strong> خلال فترة الحملة (1–24 مايو). حملات هذا التقرير تخدم إطلاق <strong>الهوية الجديدة لعلامة الوادي</strong>، ومتجر سلة انطلق متزامناً مع الحملة كقناة بيع تحت الهوية الجديدة، والأرقام أدناه ناتج مباشر لزخم الحملة. المصدر: لوحة تحكم سلة · تقرير أداء المتجر.
   </div>
 
   <!-- SALLA KPI CARDS -->
@@ -1171,10 +1063,6 @@
       <div class="chart-wrap tall"><canvas id="sallaTimeline"></canvas></div>
     </div>
   </div>
-  <div class="context-note" style="margin-top:0; margin-bottom:18px;">
-    <strong>قراءة الزمنية:</strong> أوّل طلب في المتجر كان يوم <strong>12 مايو</strong> (يوم الإطلاق). يوم <strong>13 مايو</strong> سجّل الذروة بـ51 طلباً و8,356 ر.س في يوم واحد، أي ما يقارب ثلث إجمالي مبيعات الفترة. أيام 15 و16 مايو لم تُسجّل طلبات، وعاد النشاط من 17 مايو بمعدّل يومي متوسط 8 طلبات.
-  </div>
-
   <!-- BEST SELLERS -->
   <div class="stitle">أعلى 10 منتجات مبيعاً</div>
   <div class="tbl-wrap solo">
@@ -1209,10 +1097,6 @@
       </tfoot>
     </table>
   </div>
-  <div class="context-note" style="margin-top:14px;">
-    <strong>قراءة المنتجات:</strong> منتج "فيليه (طبق 500 جرام)" يستحوذ لوحده على <strong>45٪</strong> من إجمالي الوحدات المباعة، يليه دجاج الوادي مبرد 1200 (12٪) وإيدام 900 جرام (11٪). الثلاثي الأول يمثّل ٦٩٪ من الحركة، مع تكثّف الطلب على الأحجام الفرديّة (500 جرام).
-  </div>
-
   <!-- PAYMENT & SOURCE & GEO -->
   <div class="stitle">طرق الدفع · مصادر الطلب · التوزيع الجغرافي</div>
   <div class="chart-row" style="grid-template-columns: 1fr 1fr;">
@@ -1275,13 +1159,9 @@
     </table>
   </div>
 
-  <div class="context-note" style="margin-top:14px;">
-    <strong>قراءة الانطلاقة:</strong> 154 طلباً و643 عميلاً مسجّلاً في 13 يوماً من تشغيل المتجر، بمعدّل ٨٠.٧٪ توصيل ناجح و٤.٦٪ إلغاء. الرياض تستحوذ على ٩٦٪ من الطلبات، مما يبرز جمهور الحملة الأساسي. السلال المتروكة تمثّل فرصة نمو واضحة: 396 سلة مقابل 154 طلباً مكتملاً، أي إمكانية مضاعفة الإيرادات إذا فُعّل تتبّع السلال المتروكة عبر رسائل واتساب أو خصومات استرجاع.
-  </div>
-
   <!-- FOOTER -->
   <div class="footer">
-    تقرير إنفاق حملات الوادي &nbsp;&middot;&nbsp; 1 – 24 مايو 2026 &nbsp;&middot;&nbsp; أُعدّ في 24 مايو 2026 &nbsp;&middot;&nbsp; العملة: ر.س (USD في الأعمدة الباهتة، سعر صرف 3.75) &nbsp;&middot;&nbsp; النطاق: Meta + Google + Snapchat + TikTok + متجر سلة
+    تقرير صرف حملة الوادي &nbsp;&middot;&nbsp; 1 – 24 مايو 2026 &nbsp;&middot;&nbsp; أُعدّ في 24 مايو 2026 &nbsp;&middot;&nbsp; العملة: ر.س (USD في الأعمدة الباهتة، سعر صرف 3.75) &nbsp;&middot;&nbsp; النطاق: Meta + Google + Snapchat + TikTok + متجر سلة
   </div>
 
 </div><!-- /page -->
@@ -1309,7 +1189,7 @@ new Chart(document.getElementById('platformBar').getContext('2d'), {
   data: {
     labels: platformLabels,
     datasets: [{
-      label: 'الإنفاق (ر.س)',
+      label: 'الصرف (ر.س)',
       data: platformSpendSAR,
       backgroundColor: platformColors,
       borderColor: platformBorders,
@@ -1333,13 +1213,13 @@ new Chart(document.getElementById('platformBar').getContext('2d'), {
       x: {
         ticks: {
           color: '#7c7f96',
-          font: { family:'Thmanyah Serif Text', size:11 },
+          font: { family:'IBM Plex Sans Arabic', size:11 },
           callback: v => (v>=1000 ? (v/1000).toFixed(0)+'K' : v)
         },
         grid: { color:'rgba(0,0,0,0.05)' }
       },
       y: {
-        ticks: { color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:12, weight:'600' } },
+        ticks: { color: '#7c7f96', font: { family:'IBM Plex Sans Arabic', size:12, weight:'600' } },
         grid: { display: false }
       }
     }
@@ -1367,7 +1247,7 @@ new Chart(document.getElementById('platformPie').getContext('2d'), {
         position: 'bottom',
         labels: {
           color: '#7c7f96',
-          font: { family:'Thmanyah Serif Text', size:11 },
+          font: { family:'IBM Plex Sans Arabic', size:11 },
           boxWidth: 12, padding: 14,
         }
       },
@@ -1415,13 +1295,13 @@ new Chart(document.getElementById('cpmBar').getContext('2d'), {
     },
     scales: {
       x: {
-        ticks: { color:'#7c7f96', font:{ family:'Thmanyah Serif Text', size:11 } },
+        ticks: { color:'#7c7f96', font:{ family:'IBM Plex Sans Arabic', size:11 } },
         grid:  { display:false }
       },
       y: {
         ticks: {
           color:'#7c7f96',
-          font:{ family:'Thmanyah Serif Text', size:11 },
+          font:{ family:'IBM Plex Sans Arabic', size:11 },
           callback: v => v + ' ر.س'
         },
         grid: { color:'rgba(0,0,0,0.05)' }
@@ -1443,7 +1323,7 @@ new Chart(document.getElementById('cpmBar').getContext('2d'), {
       ctx.stroke();
       ctx.setLineDash([]);
       ctx.fillStyle = 'rgba(12,14,29,0.55)';
-      ctx.font = '10px Thmanyah Serif Text';
+      ctx.font = '10px IBM Plex Sans Arabic';
       ctx.fillText('CPM مدمج ' + blendedCPM.toFixed(2) + ' ر.س', left + 6, yPos - 4);
       ctx.restore();
     }
@@ -1497,7 +1377,7 @@ new Chart(document.getElementById('sallaTimeline').getContext('2d'), {
         position: 'bottom',
         labels: {
           color: '#7c7f96',
-          font: { family:'Thmanyah Serif Text', size:11 },
+          font: { family:'IBM Plex Sans Arabic', size:11 },
           boxWidth: 12, padding: 14,
         }
       },
@@ -1515,23 +1395,23 @@ new Chart(document.getElementById('sallaTimeline').getContext('2d'), {
     },
     scales: {
       x: {
-        ticks: { color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:11 } },
+        ticks: { color: '#7c7f96', font: { family:'IBM Plex Sans Arabic', size:11 } },
         grid:  { display: false }
       },
       yRev: {
         position: 'right',
-        title: { display: true, text: 'الإيرادات (ر.س)', color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:10 } },
+        title: { display: true, text: 'الإيرادات (ر.س)', color: '#7c7f96', font: { family:'IBM Plex Sans Arabic', size:10 } },
         ticks: {
           color: '#7c7f96',
-          font: { family:'Thmanyah Serif Text', size:10 },
+          font: { family:'IBM Plex Sans Arabic', size:10 },
           callback: v => (v >= 1000 ? (v/1000).toFixed(1)+'K' : v)
         },
         grid: { color: 'rgba(0,0,0,0.05)' }
       },
       yOrd: {
         position: 'left',
-        title: { display: true, text: 'عدد الطلبات', color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:10 } },
-        ticks: { color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:10 }, precision: 0 },
+        title: { display: true, text: 'عدد الطلبات', color: '#7c7f96', font: { family:'IBM Plex Sans Arabic', size:10 } },
+        ticks: { color: '#7c7f96', font: { family:'IBM Plex Sans Arabic', size:10 }, precision: 0 },
         grid: { display: false }
       }
     }
