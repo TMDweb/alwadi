@@ -4,9 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>تقرير إنفاق حملات الوادي (1–24 مايو 2026)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
+    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/pXAhTrUNoEDB4CTUcjXvXy1gFAc.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/3WPjrTAizPcMoDaKDtKdNB0Jo50.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/bsVNF5mKouPfUJiPWsBKDU324NM.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/L62MixAFhJojtLTRD19wOsCnFg.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Thmanyah Serif Text'; src: url('https://framerusercontent.com/assets/z8brS6Wjld2pvgVBkmzMQpyPO4.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
     :root {
       --navy:    #0c0e1d;
       --yellow:  #ffc409;
@@ -27,7 +31,7 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     body {
-      font-family: 'Baloo Bhaijaan 2', sans-serif;
+      font-family: 'Thmanyah Serif Text', 'Times New Roman', serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -1085,22 +1089,108 @@
     </div>
     <div class="kpi k-navy">
       <div class="kpi-lbl">عدد الطلبات</div>
-      <div class="kpi-val n">153</div>
-      <div class="kpi-sub">125 مكتمل &middot; 16 جاري التوصيل &middot; 5 بانتظار المراجعة &middot; 7 ملغي</div>
+      <div class="kpi-val n">154</div>
+      <div class="kpi-sub">121 تم التوصيل &middot; 16 جاري التوصيل &middot; 6 بانتظار المراجعة &middot; 7 ملغي</div>
     </div>
     <div class="kpi k-teal">
-      <div class="kpi-lbl">متوسط قيمة الطلب AOV</div>
-      <div class="kpi-val t">168.24</div>
-      <div class="kpi-sub">ر.س &middot; محسوب من المبيعات ÷ عدد الطلبات</div>
+      <div class="kpi-lbl">العملاء المسجّلون</div>
+      <div class="kpi-val t">643</div>
+      <div class="kpi-sub">حساب &middot; إجمالي العملاء في المتجر منذ الإطلاق</div>
     </div>
     <div class="kpi k-blue">
-      <div class="kpi-lbl">صافي الأرباح</div>
-      <div class="kpi-val p">21,720</div>
-      <div class="kpi-sub">ر.س &middot; بعد الضرائب والشحن ورسوم الدفع</div>
+      <div class="kpi-lbl">متوسط قيمة الطلب</div>
+      <div class="kpi-val p">167</div>
+      <div class="kpi-sub">ر.س &middot; إجمالي المبيعات ÷ عدد الطلبات</div>
     </div>
   </div>
 
-  <!-- SALLA COST/PROFIT BREAKDOWN -->
+  <!-- SALLA TIMELINE CHART -->
+  <div class="chart-row" style="grid-template-columns: 1fr;">
+    <div class="chart-card">
+      <div class="chart-lbl">الطلبات والإيرادات اليومية · 12 إلى 24 مايو</div>
+      <div class="chart-wrap tall"><canvas id="sallaTimeline"></canvas></div>
+    </div>
+  </div>
+  <div class="context-note" style="margin-top:0; margin-bottom:18px;">
+    <strong>قراءة الزمنية:</strong> أوّل طلب في المتجر كان يوم <strong>12 مايو</strong> (يوم الإطلاق). يوم <strong>13 مايو</strong> سجّل الذروة بـ51 طلباً و8,356 ر.س في يوم واحد، أي ما يقارب ثلث إجمالي مبيعات الفترة. أيام 15 و16 مايو لم تُسجّل طلبات، وعاد النشاط من 17 مايو بمعدّل يومي متوسط 8 طلبات.
+  </div>
+
+  <!-- BEST SELLERS -->
+  <div class="stitle">أعلى 10 منتجات مبيعاً</div>
+  <div class="tbl-wrap solo">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>المنتج</th>
+          <th class="r">السعر (ر.س)</th>
+          <th class="r">الوحدات المباعة</th>
+          <th class="r">حصة المبيعات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>فيليه (طبق 500 جرام)</td><td class="r">13.48</td><td class="r">431</td><td class="r">45.4%</td></tr>
+        <tr><td>2</td><td>دجاج الوادي مبرد 1200</td><td class="r">14.35</td><td class="r">116</td><td class="r">12.2%</td></tr>
+        <tr><td>3</td><td>ايدام 900 جرام</td><td class="r">10.44</td><td class="r">107</td><td class="r">11.3%</td></tr>
+        <tr><td>4</td><td>افخاذ كاملة</td><td class="r">6.96</td><td class="r">65</td><td class="r">6.8%</td></tr>
+        <tr><td>5</td><td>مشكل 900</td><td class="r">9.57</td><td class="r">52</td><td class="r">5.5%</td></tr>
+        <tr><td>6</td><td>كبدة 500 جرام</td><td class="r">3.91</td><td class="r">51</td><td class="r">5.4%</td></tr>
+        <tr><td>7</td><td>سيقان 500</td><td class="r">7.39</td><td class="r">47</td><td class="r">4.9%</td></tr>
+        <tr><td>8</td><td>قلوب 500</td><td class="r">3.91</td><td class="r">29</td><td class="r">3.1%</td></tr>
+        <tr><td>9</td><td>أرجل (اقدام) 500</td><td class="r">3.04</td><td class="r">26</td><td class="r">2.7%</td></tr>
+        <tr><td>10</td><td>جناح 500 جرام</td><td class="r">3.91</td><td class="r">26</td><td class="r">2.7%</td></tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">إجمالي وحدات أعلى 10 منتجات</td>
+          <td class="r"><strong>950</strong></td>
+          <td class="r"><strong>100%</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="context-note" style="margin-top:14px;">
+    <strong>قراءة المنتجات:</strong> منتج "فيليه (طبق 500 جرام)" يستحوذ لوحده على <strong>45٪</strong> من إجمالي الوحدات المباعة، يليه دجاج الوادي مبرد 1200 (12٪) وإيدام 900 جرام (11٪). الثلاثي الأول يمثّل ٦٩٪ من الحركة، مع تكثّف الطلب على الأحجام الفرديّة (500 جرام).
+  </div>
+
+  <!-- PAYMENT & SOURCE & GEO -->
+  <div class="stitle">طرق الدفع · مصادر الطلب · التوزيع الجغرافي</div>
+  <div class="chart-row" style="grid-template-columns: 1fr 1fr;">
+    <div class="chart-card">
+      <div class="chart-lbl">طرق الدفع</div>
+      <div class="tbl-wrap solo">
+        <table>
+          <thead><tr><th>الطريقة</th><th class="r">طلب</th><th class="r">حصة</th></tr></thead>
+          <tbody>
+            <tr><td>بطاقة ائتمانية</td><td class="r">71</td><td class="r">47.3%</td></tr>
+            <tr><td>مدى</td><td class="r">65</td><td class="r">43.3%</td></tr>
+            <tr><td>Apple Pay</td><td class="r">8</td><td class="r">5.3%</td></tr>
+            <tr><td>الدفع عند الاستلام</td><td class="r">5</td><td class="r">3.3%</td></tr>
+            <tr><td>STC Pay</td><td class="r">1</td><td class="r">0.7%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-lbl">مصادر الطلب والتوزيع الجغرافي</div>
+      <div class="tbl-wrap solo">
+        <table>
+          <thead><tr><th>المصدر / المدينة</th><th class="r">طلب</th><th class="r">حصة</th></tr></thead>
+          <tbody>
+            <tr><td>المتجر مباشرة</td><td class="r">142</td><td class="r">94.7%</td></tr>
+            <tr><td>محلّي (mahally)</td><td class="r">2</td><td class="r">1.3%</td></tr>
+            <tr><td>استرجاع سلة متروكة</td><td class="r">2</td><td class="r">1.3%</td></tr>
+            <tr><td>Buy Now</td><td class="r">2</td><td class="r">1.3%</td></tr>
+            <tr style="border-top:2px solid var(--border);"><td>الرياض</td><td class="r">144</td><td class="r">96.0%</td></tr>
+            <tr><td>الطائف &middot; الدرعية &middot; بحرة</td><td class="r">4</td><td class="r">2.7%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- COST BREAKDOWN -->
+  <div class="stitle">بنية التكاليف وصافي الربح</div>
   <div class="tbl-wrap solo">
     <table>
       <thead>
@@ -1111,54 +1201,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>إجمالي المبيعات</td>
-          <td class="c">100%</td>
-          <td class="r">25,740</td>
-        </tr>
-        <tr>
-          <td>الخصومات</td>
-          <td class="c">0%</td>
-          <td class="r">0</td>
-        </tr>
-        <tr>
-          <td>صافي المبيعات</td>
-          <td class="c">100%</td>
-          <td class="r">25,740</td>
-        </tr>
-        <tr>
-          <td>الضرائب (VAT)</td>
-          <td class="c">13.0%</td>
-          <td class="r">3,350</td>
-        </tr>
-        <tr>
-          <td>رسوم الدفع الإلكتروني</td>
-          <td class="c">2.2%</td>
-          <td class="r">576.5</td>
-        </tr>
-        <tr>
-          <td>تكاليف الشحن</td>
-          <td class="c">0.3%</td>
-          <td class="r">87</td>
-        </tr>
+        <tr><td>إجمالي المبيعات</td><td class="c">100%</td><td class="r">25,740</td></tr>
+        <tr><td>الخصومات</td><td class="c">0%</td><td class="r">0</td></tr>
+        <tr><td>صافي المبيعات</td><td class="c">100%</td><td class="r">25,740</td></tr>
+        <tr><td>الضرائب (VAT)</td><td class="c">13.0%</td><td class="r">3,350</td></tr>
+        <tr><td>رسوم الدفع الإلكتروني</td><td class="c">2.2%</td><td class="r">576.5</td></tr>
+        <tr><td>تكاليف الشحن</td><td class="c">0.3%</td><td class="r">87</td></tr>
       </tbody>
       <tfoot>
-        <tr>
-          <td>إجمالي التكاليف</td>
-          <td class="c">15.6%</td>
-          <td class="r">4,020</td>
-        </tr>
-        <tr>
-          <td><strong>صافي الأرباح</strong></td>
-          <td class="c"><strong>84.4%</strong></td>
-          <td class="r"><strong>21,720</strong></td>
-        </tr>
+        <tr><td>إجمالي التكاليف</td><td class="c">15.6%</td><td class="r">4,020</td></tr>
+        <tr><td><strong>صافي الأرباح</strong></td><td class="c"><strong>84.4%</strong></td><td class="r"><strong>21,720</strong></td></tr>
       </tfoot>
     </table>
   </div>
 
   <div class="context-note" style="margin-top:14px;">
-    <strong>قراءة الأرقام:</strong> ٨٢٪ من الطلبات (125 من 153) وصلت للعميل خلال الفترة، و٤.٦٪ ألغيت، وهو معدّل إلغاء طبيعي للقطاع. متوسط الطلب 168 ر.س يعكس سلة شراء يومية. هذه أرقام انطلاقة لمتجر جديد، ومسار النمو الطبيعي بعد إطلاقة الهوية مرشّح للارتفاع مع تواصل الحملات.
+    <strong>قراءة الانطلاقة:</strong> 154 طلباً و643 عميلاً مسجّلاً في 13 يوماً من تشغيل المتجر، بمعدّل ٨٠.٧٪ توصيل ناجح و٤.٦٪ إلغاء. الرياض تستحوذ على ٩٦٪ من الطلبات، مما يبرز جمهور الحملة الأساسي. السلال المتروكة تمثّل فرصة نمو واضحة: 396 سلة مقابل 154 طلباً مكتملاً، أي إمكانية مضاعفة الإيرادات إذا فُعّل تتبّع السلال المتروكة عبر رسائل واتساب أو خصومات استرجاع.
   </div>
 
   <!-- FOOTER -->
@@ -1214,13 +1272,13 @@ new Chart(document.getElementById('platformBar').getContext('2d'), {
       x: {
         ticks: {
           color: '#7c7f96',
-          font: { family:'Baloo Bhaijaan 2', size:11 },
+          font: { family:'Thmanyah Serif Text', size:11 },
           callback: v => (v>=1000 ? (v/1000).toFixed(0)+'K' : v)
         },
         grid: { color:'rgba(0,0,0,0.05)' }
       },
       y: {
-        ticks: { color: '#7c7f96', font: { family:'Baloo Bhaijaan 2', size:12, weight:'600' } },
+        ticks: { color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:12, weight:'600' } },
         grid: { display: false }
       }
     }
@@ -1248,7 +1306,7 @@ new Chart(document.getElementById('platformPie').getContext('2d'), {
         position: 'bottom',
         labels: {
           color: '#7c7f96',
-          font: { family:'Baloo Bhaijaan 2', size:11 },
+          font: { family:'Thmanyah Serif Text', size:11 },
           boxWidth: 12, padding: 14,
         }
       },
@@ -1296,13 +1354,13 @@ new Chart(document.getElementById('cpmBar').getContext('2d'), {
     },
     scales: {
       x: {
-        ticks: { color:'#7c7f96', font:{ family:'Baloo Bhaijaan 2', size:11 } },
+        ticks: { color:'#7c7f96', font:{ family:'Thmanyah Serif Text', size:11 } },
         grid:  { display:false }
       },
       y: {
         ticks: {
           color:'#7c7f96',
-          font:{ family:'Baloo Bhaijaan 2', size:11 },
+          font:{ family:'Thmanyah Serif Text', size:11 },
           callback: v => v + ' ر.س'
         },
         grid: { color:'rgba(0,0,0,0.05)' }
@@ -1324,11 +1382,99 @@ new Chart(document.getElementById('cpmBar').getContext('2d'), {
       ctx.stroke();
       ctx.setLineDash([]);
       ctx.fillStyle = 'rgba(12,14,29,0.55)';
-      ctx.font = '10px Baloo Bhaijaan 2';
+      ctx.font = '10px Thmanyah Serif Text';
       ctx.fillText('CPM مدمج ' + blendedCPM.toFixed(2) + ' ر.س', left + 6, yPos - 4);
       ctx.restore();
     }
   }]
+});
+
+// ── SALLA TIMELINE: orders + revenue per day ─────────────────────────────
+const sallaDays    = ['12','13','14','15','16','17','18','19','20','21','22','23','24'];
+const sallaOrders  = [8, 51, 11, 0, 0, 18, 23, 7, 10, 3, 9, 4, 6];
+const sallaRevSAR  = [1491.97, 8355.94, 2442.65, 0, 0, 3989.40, 3867.48, 1134.48, 1681.45, 379.05, 1431.68, 1533.06, 1134.49];
+
+new Chart(document.getElementById('sallaTimeline').getContext('2d'), {
+  data: {
+    labels: sallaDays,
+    datasets: [
+      {
+        type: 'bar',
+        label: 'الإيرادات (ر.س)',
+        data: sallaRevSAR,
+        backgroundColor: 'rgba(58,138,134,0.65)',
+        borderColor: TDARK,
+        borderWidth: 1.5,
+        borderRadius: 6,
+        yAxisID: 'yRev',
+        order: 2,
+      },
+      {
+        type: 'line',
+        label: 'عدد الطلبات',
+        data: sallaOrders,
+        borderColor: NAVY,
+        backgroundColor: 'rgba(12,14,29,0.10)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#ffc409',
+        pointBorderColor: NAVY,
+        pointBorderWidth: 1.5,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        tension: 0.25,
+        yAxisID: 'yOrd',
+        order: 1,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: '#7c7f96',
+          font: { family:'Thmanyah Serif Text', size:11 },
+          boxWidth: 12, padding: 14,
+        }
+      },
+      tooltip: {
+        callbacks: {
+          title: ctx => 'مايو ' + ctx[0].label,
+          label: ctx => {
+            const v = ctx.raw;
+            return ctx.dataset.label === 'عدد الطلبات'
+              ? ' ' + v + ' طلب'
+              : ' ' + v.toLocaleString(undefined, {maximumFractionDigits: 0}) + ' ر.س';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:11 } },
+        grid:  { display: false }
+      },
+      yRev: {
+        position: 'right',
+        title: { display: true, text: 'الإيرادات (ر.س)', color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:10 } },
+        ticks: {
+          color: '#7c7f96',
+          font: { family:'Thmanyah Serif Text', size:10 },
+          callback: v => (v >= 1000 ? (v/1000).toFixed(1)+'K' : v)
+        },
+        grid: { color: 'rgba(0,0,0,0.05)' }
+      },
+      yOrd: {
+        position: 'left',
+        title: { display: true, text: 'عدد الطلبات', color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:10 } },
+        ticks: { color: '#7c7f96', font: { family:'Thmanyah Serif Text', size:10 }, precision: 0 },
+        grid: { display: false }
+      }
+    }
+  }
 });
 </script>
 </body>
